@@ -91,6 +91,7 @@ CheckGeno <- function(GenoM, quiet=FALSE, Plot=FALSE,
 
   # check IDs ----
   if (is.null(rownames(GenoM))) stop("'GenoM' has no rownames, these should be the individual IDs")
+  if (anyNA(rownames(GenoM))) stop("'GenoM' has missing values (NAs)")
   if (any(duplicated(rownames(GenoM))))  stop("'GenoM' has duplicate IDs. Please exclude or rename these samples,",
                                               " or run GenoConvert with UseFID=TRUE.")
   if (any(grepl(" ", rownames(GenoM))))  stop("GenoM rownames must not include spaces")
